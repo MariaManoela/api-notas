@@ -27,4 +27,7 @@ public class Aluno {
     private float notaTerceiroTrimestre;
     private float notaFinal;
 
+    public void setNotaFinal(float notaFinal) {
+        this.notaFinal = (notaPrimeiroTrimestre + notaSegundoTrimestre + notaTerceiroTrimestre)/3;
+    }
 }
