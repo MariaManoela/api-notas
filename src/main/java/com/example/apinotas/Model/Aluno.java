@@ -31,4 +31,12 @@ public class Aluno {
     public void setNotaFinal(float notaFinal) {
         this.notaFinal = (notaPrimeiroTrimestre + notaSegundoTrimestre + notaTerceiroTrimestre)/3;
     }
+
+    public void setAprovado(boolean aprovado) {
+        if(notaFinal >= 7) {
+            this.aprovado = true;
+        } else {
+            this.aprovado = false;
+        }
+    }
 }
