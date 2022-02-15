@@ -25,4 +25,8 @@ public class AlunoService {
     public void save(Aluno aluno) {
         alunoRepository.save(aluno);
     }
+
+    public void deleteById(Long id) {
+        alunoRepository.deleteById(id);
+    }
 }

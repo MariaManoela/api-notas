@@ -29,4 +29,9 @@ public class AlunoController {
     public void cadastroAluno(@RequestBody Aluno aluno) {
         alunoService.save(aluno);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        alunoService.deleteById(id);
+    }
 }
