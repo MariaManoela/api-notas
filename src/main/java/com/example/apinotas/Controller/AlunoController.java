@@ -27,6 +27,8 @@ public class AlunoController {
 
     @PostMapping
     public void cadastroAluno(@RequestBody Aluno aluno) {
+        aluno.setNotaFinal(aluno.getNotaPrimeiroTrimestre(), aluno.getNotaSegundoTrimestre(),
+                aluno.getNotaTerceiroTrimestre());
         alunoService.save(aluno);
     }
 

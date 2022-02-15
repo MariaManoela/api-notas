@@ -28,8 +28,8 @@ public class Aluno {
     private float notaFinal;
     private boolean aprovado;
 
-    public void setNotaFinal(float notaFinal) {
-        this.notaFinal = (notaPrimeiroTrimestre + notaSegundoTrimestre + notaTerceiroTrimestre)/3;
+    public void setNotaFinal(float notaPrimeiroTrimestre, float notaSegundoTrimestre, float notaTerceiroTrimestre) {
+        notaFinal = (notaPrimeiroTrimestre + notaSegundoTrimestre + notaTerceiroTrimestre)/3;
     }
 
     public void setAprovado(boolean aprovado) {
