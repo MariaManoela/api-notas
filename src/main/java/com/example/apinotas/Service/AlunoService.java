@@ -1,5 +1,6 @@
 package com.example.apinotas.Service;
 
+import com.example.apinotas.Model.Aluno;
 import com.example.apinotas.Repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,9 @@ public class AlunoService {
 
     public Optional findById(Long id) {
         return alunoRepository.findById(id);
+    }
+
+    public void save(Aluno aluno) {
+        alunoRepository.save(aluno);
     }
 }

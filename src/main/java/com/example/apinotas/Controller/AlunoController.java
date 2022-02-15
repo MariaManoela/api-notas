@@ -1,11 +1,9 @@
 package com.example.apinotas.Controller;
 
+import com.example.apinotas.Model.Aluno;
 import com.example.apinotas.Service.AlunoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,5 +23,10 @@ public class AlunoController {
     @GetMapping("/{id}")
     public Optional findById (@PathVariable("id")Long id) {
         return alunoService.findById(id);
+    }
+
+    @PostMapping
+    public void cadastroAluno(@RequestBody Aluno aluno) {
+        alunoService.save(aluno);
     }
 }
