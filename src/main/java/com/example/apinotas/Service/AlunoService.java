@@ -12,7 +12,7 @@ public class AlunoService {
 
     private final AlunoRepository alunoRepository;
 
-    public static List findAll() {
+    public List findAll() {
         return alunoRepository.findAll();
     }
 }
