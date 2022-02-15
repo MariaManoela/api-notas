@@ -32,7 +32,7 @@ public class Aluno {
         notaFinal = (notaPrimeiroTrimestre + notaSegundoTrimestre + notaTerceiroTrimestre)/3;
     }
 
-    public void setAprovado(boolean aprovado) {
+    public void setAprovado(float notaFinal) {
         if(notaFinal >= 7) {
             this.aprovado = true;
         } else {

@@ -29,6 +29,7 @@ public class AlunoController {
     public void cadastroAluno(@RequestBody Aluno aluno) {
         aluno.setNotaFinal(aluno.getNotaPrimeiroTrimestre(), aluno.getNotaSegundoTrimestre(),
                 aluno.getNotaTerceiroTrimestre());
+        aluno.setAprovado(aluno.getNotaFinal());
         alunoService.save(aluno);
     }
 
