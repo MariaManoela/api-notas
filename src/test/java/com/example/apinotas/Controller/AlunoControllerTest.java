@@ -20,7 +20,7 @@ public class AlunoControllerTest {
     AlunoService alunoService;
 
     @Test
-    public void deveriaRetornarListaDeAlunos() throws Exception {
+    public void retornarListaDeAlunos() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/alunos"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").isArray());
