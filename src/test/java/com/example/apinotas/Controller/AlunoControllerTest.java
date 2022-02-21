@@ -33,8 +33,6 @@ public class AlunoControllerTest {
 //        this.mockMvc.perform(MockMvcRequestBuilders.get("/alunos"))
 //                .andExpect(MockMvcResultMatchers.status().isOk());
 //
-//        System.out.println(listaAlunos);
-//        System.out.println(alunoService.findAll());
 
     }
 }
