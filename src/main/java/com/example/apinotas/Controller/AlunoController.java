@@ -16,7 +16,7 @@ public class AlunoController {
     private final AlunoService alunoService;
 
     @GetMapping
-    public List findAll() {
+    public List<Aluno> findAll() {
         return alunoService.findAll();
     }
 
@@ -27,9 +27,6 @@ public class AlunoController {
 
     @PostMapping
     public void cadastroAluno(@RequestBody Aluno aluno) {
-        aluno.setNotaFinal(aluno.getNotaPrimeiroTrimestre(), aluno.getNotaSegundoTrimestre(),
-                aluno.getNotaTerceiroTrimestre());
-        aluno.setAprovado(aluno.getNotaFinal());
         alunoService.save(aluno);
     }
 
