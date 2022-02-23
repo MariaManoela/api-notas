@@ -14,16 +14,17 @@ public class AlunoService {
 
     private final AlunoRepository alunoRepository;
 
-    public List findAll() {
+    public List<Aluno> findAll() {
         return alunoRepository.findAll();
     }
 
-    public Optional findById(Long id) {
+    public Optional<Aluno> findById(Long id) {
         return alunoRepository.findById(id);
     }
 
-    public void save(Aluno aluno) {
-        alunoRepository.save(aluno);
+    public Aluno save(Aluno aluno) {
+        aluno.finalizarAvaliacao(aluno.getNotaPrimeiroTrimestre(), aluno.getNotaSegundoTrimestre(), aluno.getNotaTerceiroTrimestre());
+        return alunoRepository.save(aluno);
     }
 
     public void deleteById(Long id) {
