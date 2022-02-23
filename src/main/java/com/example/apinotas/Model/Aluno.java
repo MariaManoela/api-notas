@@ -1,9 +1,6 @@
 package com.example.apinotas.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,14 +22,17 @@ public class Aluno {
     private float notaPrimeiroTrimestre;
     private float notaSegundoTrimestre;
     private float notaTerceiroTrimestre;
+    @Setter(AccessLevel.NONE)
     private float notaFinal;
+    @Setter(AccessLevel.NONE)
     private boolean aprovado;
 
-    public void setNotaFinal(float notaPrimeiroTrimestre, float notaSegundoTrimestre, float notaTerceiroTrimestre) {
+    public void finalizarAvaliacao(float notaPrimeiroTrimestre, float notaSegundoTrimestre, float notaTerceiroTrimestre) {
         notaFinal = (notaPrimeiroTrimestre + notaSegundoTrimestre + notaTerceiroTrimestre)/3;
+        setAprovado(notaFinal);
     }
 
-    public void setAprovado(float notaFinal) {
+    private void setAprovado(float notaFinal) {
         if(notaFinal >= 7) {
             this.aprovado = true;
         } else {
