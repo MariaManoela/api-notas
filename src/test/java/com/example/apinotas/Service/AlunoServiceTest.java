@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -20,12 +19,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -36,7 +33,7 @@ class AlunoServiceTest {
     @Autowired
     MockMvc mockMvc;
 
-    @MockBean
+    @Mock
     private AlunoRepository alunoRepository;
 
     @InjectMocks
@@ -48,19 +45,19 @@ class AlunoServiceTest {
 
     @Test
     void retornarListaDeTodosAlunos() {
-        List<Aluno> esperado = Collections.singletonList(buildAluno());
+//        List<Aluno> esperado = Collections.singletonList(buildAluno());
 
-        Mockito.when(alunoRepository.findAll()).thenReturn(esperado);
-
-        List<Aluno> resultado = alunoRepository.findAll();
-        Assertions.assertEquals(esperado, resultado);
-//        List<Aluno> lista = new ArrayList<>();
-//        lista.add(new Aluno(1L, "Manoela", 9, 8.4f, 9.2f, 8.7f, 8.76f,true));
-//        lista.add(new Aluno(2L, "Camila", 8, 6.8f, 7.5f, 6.9f, 7.06f,true));
+//        Mockito.when(alunoRepository.findAll()).thenReturn(esperado);
 //
-//        when(alunoRepository.findAll()).thenReturn(lista);
-//        assertEquals(alunoService.findAll(), lista);
-//        verify(alunoRepository).findAll();
+//        List<Aluno> resultado = alunoRepository.findAll();
+//        Assertions.assertEquals(esperado, resultado);
+        List<Aluno> lista = new ArrayList<>();
+        lista.add(new Aluno(1L, "Manoela", 9, 8.4f, 9.2f, 8.7f, 8.76f,true));
+        lista.add(new Aluno(2L, "Camila", 8, 6.8f, 7.5f, 6.9f, 7.06f,true));
+
+        when(alunoRepository.findAll()).thenReturn(lista);
+        Assertions.assertEquals(alunoService.findAll(), lista);
+        verify(alunoRepository).findAll();
     }
 
     @Test
@@ -90,7 +87,7 @@ class AlunoServiceTest {
         String paraJson = new Gson().toJson(aluno1);
 
         Mockito.when(alunoRepository.save(aluno1)).thenReturn(aluno1);
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/alunos")
+       this.mockMvc.perform(MockMvcRequestBuilders.post("/alunos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(paraJson))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -104,7 +101,7 @@ class AlunoServiceTest {
                 .andExpect((ResultMatcher) jsonPath("$.aprovado", is(false)))
                 .andDo(MockMvcResultHandlers.print());
 
-        verify(alunoService).save(aluno1);
+        verify(alunoRepository).save(aluno1);
     }
 
 //    @Test

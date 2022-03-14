@@ -27,7 +27,7 @@ public class AlunoController {
 
     @PostMapping
     public void cadastroAluno(@RequestBody Aluno aluno) {
-        alunoService.save(aluno);
+        alunoService.cadastraAluno(aluno);
     }
 
     @DeleteMapping("/{id}")

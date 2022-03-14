@@ -46,6 +46,10 @@ class AlunoControllerTest {
         List<Aluno> resultado = alunoService.findAll();
         Assertions.assertEquals(esperado,resultado);
 
+//        List<Aluno> listaAlunos = new ArrayList<>();
+//        Aluno aluno1 = new Aluno(1L, "Maria", 7, 6.4f, 7.2f, 6.7f, 6.76f,false);
+//        Aluno aluno2 = new Aluno(2L, "Manu", 7, 6.4f, 7.2f, 6.7f, 6.76f,false);
+//
 //        Mockito.when(alunoService.findAll()).thenReturn(listaAlunos);
 //        this.mockMvc.perform(MockMvcRequestBuilders.get("/alunos"))
 //                .andDo(MockMvcResultHandlers.print())
@@ -79,7 +83,7 @@ class AlunoControllerTest {
 
         String paraJson = new Gson().toJson(aluno1);
 
-        Mockito.when(alunoService.save(aluno1)).thenReturn(aluno1);
+        Mockito.when(alunoService.cadastraAluno(aluno1)).thenReturn(aluno1);
         this.mockMvc.perform(MockMvcRequestBuilders.post("/alunos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(paraJson))
@@ -94,7 +98,7 @@ class AlunoControllerTest {
                 .andExpect((ResultMatcher) jsonPath("$.aprovado", is(false)))
                 .andDo(MockMvcResultHandlers.print());
 
-        verify(alunoService).save(aluno1);
+        verify(alunoService).cadastraAluno(aluno1);
 
 //        List<Aluno> esperado = Collections.singletonList(buildAluno());
 //        Aluno esperado = new Aluno(1L, "Maria", 7, 6.4f, 7.2f, 6.7f, 6.76f,false);

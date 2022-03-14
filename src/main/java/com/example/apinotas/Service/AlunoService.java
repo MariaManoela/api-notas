@@ -22,7 +22,7 @@ public class AlunoService {
         return alunoRepository.findById(id);
     }
 
-    public Aluno save(Aluno aluno) {
+    public Aluno cadastraAluno(Aluno aluno) {
         aluno.finalizarAvaliacao(aluno.getNotaPrimeiroTrimestre(), aluno.getNotaSegundoTrimestre(), aluno.getNotaTerceiroTrimestre());
         return alunoRepository.save(aluno);
     }
