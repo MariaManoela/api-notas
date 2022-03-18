@@ -26,7 +26,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public void cadastroAluno(@RequestBody Aluno aluno) {
+    public void cadastraAluno(@RequestBody Aluno aluno) {
         alunoService.cadastraAluno(aluno);
     }
 
