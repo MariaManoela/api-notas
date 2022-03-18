@@ -1,26 +1,14 @@
-package com.example.apinotas.Service;
+package com.example.apinotas.service;
 
-import com.example.apinotas.Model.Aluno;
-import com.example.apinotas.Repository.AlunoRepository;
-import com.google.gson.Gson;
-import org.junit.jupiter.api.Assertions;
+import com.example.apinotas.model.Aluno;
+import com.example.apinotas.repository.AlunoRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;

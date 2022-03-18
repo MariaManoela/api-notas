@@ -1,7 +1,7 @@
-package com.example.apinotas.Controller;
+package com.example.apinotas.controller;
 
-import com.example.apinotas.Model.Aluno;
-import com.example.apinotas.Service.AlunoService;
+import com.example.apinotas.model.Aluno;
+import com.example.apinotas.service.AlunoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

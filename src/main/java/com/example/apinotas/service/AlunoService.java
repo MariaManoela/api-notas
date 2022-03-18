@@ -1,7 +1,7 @@
-package com.example.apinotas.Service;
+package com.example.apinotas.service;
 
-import com.example.apinotas.Model.Aluno;
-import com.example.apinotas.Repository.AlunoRepository;
+import com.example.apinotas.model.Aluno;
+import com.example.apinotas.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

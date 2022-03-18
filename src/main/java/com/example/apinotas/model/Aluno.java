@@ -1,4 +1,4 @@
-package com.example.apinotas.Model;
+package com.example.apinotas.model;
 
 import lombok.*;
 

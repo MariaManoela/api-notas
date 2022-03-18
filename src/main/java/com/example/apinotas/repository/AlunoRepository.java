@@ -1,6 +1,6 @@
-package com.example.apinotas.Repository;
+package com.example.apinotas.repository;
 
-import com.example.apinotas.Model.Aluno;
+import com.example.apinotas.model.Aluno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
