@@ -10,6 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -46,5 +48,16 @@ class AlunoServiceTest {
 
         assertEquals(alunoSalvo, alunoRetornado);
         verify(alunoRepository).save(aluno);
+    }
+
+    @Test
+    void retornarAlunoPeloId() {
+        Aluno alunoSalvo = new Aluno(1L, "Maria", 9, 9f, 8.7f, 8.9f, 8.86f, true);
+        when(alunoRepository.findById(1L)).thenReturn(Optional.of(alunoSalvo));
+
+        Optional<Aluno> alunoRetornado = alunoService.findById(1L);
+
+        assertEquals(Optional.of(alunoSalvo), alunoRetornado);
+        verify(alunoRepository).findById(1L);
     }
 }
