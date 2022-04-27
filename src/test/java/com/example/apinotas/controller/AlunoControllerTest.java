@@ -8,6 +8,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -40,5 +42,16 @@ class AlunoControllerTest {
 
        assertEquals(alunoSalvo, alunoRetornado);
        verify(alunoService).cadastraAluno(aluno);
+   }
+
+   @Test
+    void retornarAlunoPeloId() {
+       Aluno alunoSalvo = new Aluno(1L, "Maria", 9, 9f, 8.7f, 8.9f, 8.86f, true);
+       when(alunoService.findById(1L)).thenReturn(Optional.of(alunoSalvo));
+
+       Optional<Aluno> alunoRetornado = alunoService.findById(1L);
+
+       assertEquals(Optional.of(alunoSalvo), alunoRetornado);
+       verify(alunoService).findById(1L);
    }
 }
