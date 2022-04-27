@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -59,5 +60,18 @@ class AlunoServiceTest {
 
         assertEquals(Optional.of(alunoSalvo), alunoRetornado);
         verify(alunoRepository).findById(1L);
+    }
+
+    @Test
+    void retornarListaDeAlunos() {
+        Aluno alunoSalvo1 = new Aluno(1L, "Maria", 9, 9f, 8.7f, 8.9f, 8.86f, true);
+        Aluno alunoSalvo2 = new Aluno(1L, "Maria", 9, 9f, 8.7f, 8.9f, 8.86f, true);
+        List<Aluno> listaEsperada = List.of(alunoSalvo1, alunoSalvo2);
+        when(alunoRepository.findAll()).thenReturn(listaEsperada);
+
+        List<Aluno> listaRetornada = alunoService.findAll();
+
+        assertEquals(listaEsperada, listaRetornada);
+        verify(alunoRepository).findAll();
     }
 }
